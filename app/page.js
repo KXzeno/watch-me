@@ -2,21 +2,36 @@
 import Image from "next/image";
 
 export default function Home() {
-  let handleClick = () => alert('Who?');
+  /* Initial prompt renderer */
   let initialPrompt = [
-    "What brings greater company than most?",
-    "For what do we have an infinite appetite for?",
-    "In becoming greater, who do you make your prized witness?",
+    {
+      id: 1,
+      msg: "What brings greater company than most?",
+    },
+    {
+      id: 2,
+      msg: "For what do we have an infinite appetite for?",
+    },
+    {
+      id: 3,
+      msg: "In becoming greater, who do you make your prized witness?",
+    },
   ]
 
   let promptRandom = (arr) => arr[Math.floor(Math.random() * arr.length)];
+  let prompt = promptRandom(initialPrompt);
+
+  /* Prompt submit state checker */
+  let handleSubmit = () => {
+
+  };
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <form onSubmit={handleClick}>
-        <p className="text-center mb-2">{promptRandom(initialPrompt)}</p>
+      <form onSubmit={handleSubmit}>
+        <p className="text-center mb-2">{prompt.msg}</p>
         <div className="flex justify-center">
-          <input className="text-black" />
+          <input className="text-black text-center" />
         </div>
       </form>
     </main>
