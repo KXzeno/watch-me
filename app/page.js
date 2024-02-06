@@ -27,7 +27,7 @@ export default function Home() {
   /* Prompt submit state checker */
   let handleSubmit = (event) => {
     event.preventDefault();
-    event.target[0].value === prompt.ans && alert('Correct');
+    event.target[0].value.toUpperCase() === prompt.ans.toUpperCase() && alert('Correct');
   };
 
   return (
