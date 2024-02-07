@@ -35,7 +35,10 @@ export default function Home() {
       <form onSubmit={handleSubmit}>
         <p className="text-center mb-2">{prompt.msg}</p>
         <div className="flex justify-center">
-          <input className="text-black text-center" />
+          <input 
+            className="text-red text-center bg-black animate-pulse border-[0.1rem] hover:animate-none focus:animate-none focus:outline-none focus:border-0 rounded-lg border-white"
+            placeholder="_"
+          />
         </div>
       </form>
     </main>
