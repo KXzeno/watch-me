@@ -37,6 +37,19 @@ export default function Home() {
     event.target[0].value = "";
   };
 
+  /* Prompt prerender */
+  let [initPrompt, setInitPrompt] = React.useState(
+    <form onSubmit={handleSubmit} className="mb-4">
+      <p className="text-center mb-2">{prompt.msg}</p>
+      <div className="flex justify-center">
+        <input 
+          className="text-red text-center bg-black animate-pulse border-[0.1rem] hover:animate-none focus:animate-none focus:outline-none focus:border-0 rounded-lg border-white"
+          placeholder="_"
+        />
+      </div>
+    </form>
+  );
+
   /* Expand archetype values */
   let [fati, setFati] = React.useState(<p className="m-1.5">Fati</p>);
 
@@ -56,31 +69,20 @@ export default function Home() {
       </div>
     );
     setFati(children);
+    setInitPrompt("");
   }
 
   return (
     <main className="flex flex-col items-center justify-between p-24">
-
-      <form onSubmit={handleSubmit} className="mb-4">
-        <p className="text-center mb-2">{prompt.msg}</p>
-        <div className="flex justify-center">
-          <input 
-            className="text-red text-center bg-black animate-pulse border-[0.1rem] hover:animate-none focus:animate-none focus:outline-none focus:border-0 rounded-lg border-white"
-            placeholder="_"
-          />
-        </div>
-      </form>
-
+      {initPrompt}
       { /* Once chosen, collide to middle col and slide down page */ }
       { /* Make 1 col default, when active expand to more columns, do previous comment's action when one is chosen then slide to after "Archetype:" instead */ }
       <p className="mt-12">Choose your Archetype:</p>
       <div className="mt-4 border-black">
-        <button onClick={showChildren}>
+        <div onClick={showChildren} style={{cursor: 'pointer'}}>
           {fati}
-        </button>
-
+        </div>
       </div>
-
     </main>
   );
 }
