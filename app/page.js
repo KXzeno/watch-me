@@ -23,12 +23,16 @@ export default function Home() {
     },
   ]
 
+  /* Prevent rendering from btn/form submits */
+  const preventDefault = async (event) => await event.preventDefault();
+  const zeroRender = async () => await preventDefault(event);
+
   let promptRandom = (arr) => arr[Math.floor(Math.random() * arr.length)];
   let prompt = promptRandom(initialPrompt);
 
   /* Prompt submit state checker */
-  let handleSubmit = (event) => {
-    event.preventDefault();
+  let handleSubmit = async (event) => {
+    await preventDefault(event);
     event.target[0].value.toUpperCase() === prompt.ans.toUpperCase() && alert('Correct');
     event.target[0].value = "";
   };
@@ -37,7 +41,7 @@ export default function Home() {
   let [fati, setFati] = React.useState(<p className="m-1.5">Fati</p>);
 
   let showChildren = (event) => {
-    event.preventDefault();
+    preventDefault(event);
     let children = (
       <div className="grid grid-cols-3">
         <button className="archetype-btn">
