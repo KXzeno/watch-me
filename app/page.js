@@ -45,16 +45,17 @@ export default function Home() {
         </div>
       </form>
 
+      { /* Once chosen, collide to middle col and slide down page */ }
       <p className="mt-12">Choose your Archetype:</p>
       <div className="grid grid-rows-3 grid-cols-3 gap-4 mt-4 border-black">
         <button className="hover:border-2 hover:border-x-red-600 hover:border-y-inherit">
-          Test 
+          <p className="m-1.5">Ignorant</p>
         </button> 
         <button className="hover:border-2 hover:border-x-red-600 hover:border-y-inherit">
-          <p className="m-1.5">Test</p>
+          <p className="m-1.5">Harmonious</p>
         </button> 
         <button className="hover:border-2 hover:border-x-red-600 hover:border-y-inherit">
-          Test
+          <p className="m-1.5">Dissonant</p>
         </button> 
 
       </div>
