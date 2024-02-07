@@ -1,4 +1,5 @@
 "use client";
+import React from 'react';
 import Image from "next/image";
 import 'dotenv/config';
 
@@ -32,6 +33,27 @@ export default function Home() {
     event.target[0].value = "";
   };
 
+  /* Expand archetype values */
+  let [fati, setFati] = React.useState(<p className="m-1.5">Fati</p>);
+
+  let showChildren = (event) => {
+    event.preventDefault();
+    let children = (
+      <div className="grid grid-cols-3">
+        <button className="archetype-btn">
+          <p className="m-1.5">Ignorant</p>
+        </button>
+        <button className="archetype-btn">
+          <p className="m-1.5">Harmonious</p>
+        </button>
+        <button className="archetype-btn">
+          <p className="m-1.5">Dissonant</p>
+        </button> 
+      </div>
+    );
+    setFati(children);
+  }
+
   return (
     <main className="flex flex-col items-center justify-between p-24">
 
@@ -48,28 +70,13 @@ export default function Home() {
       { /* Once chosen, collide to middle col and slide down page */ }
       { /* Make 1 col default, when active expand to more columns, do previous comment's action when one is chosen then slide to after "Archetype:" instead */ }
       <p className="mt-12">Choose your Archetype:</p>
-      <div className="grid grid-rows-3 grid-cols-3 gap-4 mt-4 border-black">
-        <button className="archetype-btn">
-          <p className="m-1.5">Ignorant</p>
-        </button> 
-        <button className="archetype-btn">
-          <p className="m-1.5">Harmonious</p>
-        </button> 
-        <button className="archetype-btn">
-          <p className="m-1.5">Dissonant</p>
-        </button> 
-        <button className="archetype-btn">
-          <p className="m-1.5">1</p>
-        </button> 
-        <button className="archetype-btn">
-          <p className="m-1.5">2</p>
-        </button> 
-        <button className="archetype-btn">
-          <p className="m-1.5">3</p>
-        </button> 
+      <div className="mt-4 border-black">
+        <button onClick={showChildren}>
+          {fati}
+        </button>
 
       </div>
 
     </main>
-);
+  );
 }
