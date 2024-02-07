@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import 'dotenv/config';
 
 export default function Home() {
   /* Initial prompt renderer */
@@ -28,6 +29,7 @@ export default function Home() {
   let handleSubmit = (event) => {
     event.preventDefault();
     event.target[0].value.toUpperCase() === prompt.ans.toUpperCase() && alert('Correct');
+    event.target[0].value = "";
   };
 
   return (
@@ -41,6 +43,7 @@ export default function Home() {
           />
         </div>
       </form>
+
     </main>
   );
 }
