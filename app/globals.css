@@ -31,3 +31,9 @@ body {
     text-wrap: balance;
   }
 }
+
+@layer base {
+  .archetype-btn {
+    @apply hover:border-2 hover:border-x-red-600 hover:border-y-inherit
+  }
+}
