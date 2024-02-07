@@ -33,8 +33,9 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <form onSubmit={handleSubmit}>
+    <main className="flex flex-col items-center justify-between p-24">
+
+      <form onSubmit={handleSubmit} className="mb-4">
         <p className="text-center mb-2">{prompt.msg}</p>
         <div className="flex justify-center">
           <input 
@@ -44,6 +45,20 @@ export default function Home() {
         </div>
       </form>
 
+      <p className="mt-12">Choose your Archetype:</p>
+      <div className="grid grid-rows-3 grid-cols-3 gap-4 mt-4 border-black">
+        <button className="hover:border-2 hover:border-x-red-600 hover:border-y-inherit">
+          Test 
+        </button> 
+        <button className="hover:border-2 hover:border-x-red-600 hover:border-y-inherit">
+          <p className="m-1.5">Test</p>
+        </button> 
+        <button className="hover:border-2 hover:border-x-red-600 hover:border-y-inherit">
+          Test
+        </button> 
+
+      </div>
+
     </main>
-  );
+);
 }
