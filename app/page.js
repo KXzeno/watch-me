@@ -1,34 +1,19 @@
 "use client";
+/* Global imports */
 import React from 'react';
 import Image from "next/image";
 import 'dotenv/config';
 
+/* Local imports */
+import { 
+  prompt,
+} from './components';
+
 export default function Home() {
-  /* Initial prompt renderer */
-  let initialPrompt = [
-    {
-      id: 1,
-      msg: "What brings greater company than most?",
-      ans: "silence",
-    },
-    {
-      id: 2,
-      msg: "For what do we have an infinite appetite for?",
-      ans: "distraction",
-    },
-    {
-      id: 3,
-      msg: "In becoming greater, who do you make your prized witness?",
-      ans: "myself",
-    },
-  ]
 
   /* Prevent rendering from btn/form submits */
   const preventDefault = async (event) => await event.preventDefault();
   const zeroRender = async () => await preventDefault(event);
-
-  let promptRandom = (arr) => arr[Math.floor(Math.random() * arr.length)];
-  let prompt = promptRandom(initialPrompt);
 
   /* Prompt submit state checker */
   let handleSubmit = async (event) => {
