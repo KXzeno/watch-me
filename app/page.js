@@ -10,11 +10,11 @@ import {
 } from './components';
 
 export default function Home() {
-
   /* Prevent rendering from btn/form submits */
   const preventDefault = async (event) => await event.preventDefault();
   const zeroRender = async () => await preventDefault(event);
 
+  let bruh = (event) => "ok";
   /* Prompt submit state checker */
   let handleSubmit = async (event) => {
     await preventDefault(event);
@@ -23,9 +23,10 @@ export default function Home() {
   };
 
   /* Prompt prerender */
+  let promptMsg = prompt().msg;
   let [initPrompt, setInitPrompt] = React.useState(
     <form onSubmit={handleSubmit} className="mb-4">
-      <p className="text-center mb-2">{prompt.msg}</p>
+      <p className="text-center mb-2">{promptMsg}</p>
       <div className="flex justify-center">
         <input 
           className="text-red text-center bg-black animate-pulse border-[0.1rem] hover:animate-none focus:animate-none focus:outline-none focus:border-0 rounded-lg border-white"
