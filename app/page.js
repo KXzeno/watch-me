@@ -60,9 +60,9 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center justify-between p-24">
-      {initPrompt}
-      { /* Once chosen, collide to middle col and slide down page */ }
-      { /* Make 1 col default, when active expand to more columns, do previous comment's action when one is chosen then slide to after "Archetype:" instead */ }
+      <div className="box-border h-32">
+        { initPrompt }
+      </div>
       <p className="mt-12">Choose your Archetype:</p>
       <div className="mt-4 border-black">
         <div onClick={showChildren} style={{cursor: 'pointer'}}>
