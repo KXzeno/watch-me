@@ -13,20 +13,19 @@ export default function Home() {
   /* Prevent rendering from btn/form submits */
   const preventDefault = async (event) => await event.preventDefault();
   const zeroRender = async () => await preventDefault(event);
+  let promptObj = prompt();
 
-  let bruh = (event) => "ok";
   /* Prompt submit state checker */
   let handleSubmit = async (event) => {
     await preventDefault(event);
-    event.target[0].value.toUpperCase() === prompt.ans.toUpperCase() && alert('Correct');
+    event.target[0].value.toUpperCase() === promptObj.ans.toUpperCase() && alert('Correct');
     event.target[0].value = "";
   };
 
   /* Prompt prerender */
-  let promptMsg = prompt().msg;
   let [initPrompt, setInitPrompt] = React.useState(
     <form onSubmit={handleSubmit} className="mb-4">
-      <p className="text-center mb-2">{promptMsg}</p>
+      <p className="text-center mb-2">{promptObj.msg}</p>
       <div className="flex justify-center">
         <input 
           className="text-red text-center bg-black animate-pulse border-[0.1rem] hover:animate-none focus:animate-none focus:outline-none focus:border-0 rounded-lg border-white"
