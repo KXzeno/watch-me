@@ -3,17 +3,19 @@
 import React from 'react';
 import Image from "next/image";
 import 'dotenv/config';
+import { revalidatePath } from 'next/cache';
 
 /* Local imports */
 import { 
   prompt,
 } from './components';
 
+import Archetype from './components/archetype.tsx';
+
 export default function Home() {
   /* Prevent rendering from btn/form submits */
   const preventDefault = async (event) => await event.preventDefault();
   const zeroRender = async () => await preventDefault(event);
-  let promptObj = prompt();
 
   /* Prompt submit state checker */
   let handleSubmit = async (event) => {
@@ -23,6 +25,7 @@ export default function Home() {
   };
 
   /* Prompt prerender */
+  let promptObj = prompt();
   let [initPrompt, setInitPrompt] = React.useState(
     <form onSubmit={handleSubmit} className="mb-4">
       <p className="text-center mb-2">{promptObj.msg}</p>
@@ -38,19 +41,24 @@ export default function Home() {
   /* Expand archetype values */
   let [fati, setFati] = React.useState(<p className="m-1.5 hover:animate-bounce">Fati</p>);
 
+  let handleClick = (archString) => {
+    setFati(archString);
+    revalidatePath('/');
+  };
+
   let showChildren = (event) => {
     preventDefault(event);
     let children = (
       <div className="grid grid-cols-3">
-        <button className="archetype-btn">
-          <p className="m-1.5">Ignorant</p>
-        </button>
-        <button className="archetype-btn">
-          <p className="m-1.5">Harmonious</p>
-        </button>
-        <button className="archetype-btn">
-          <p className="m-1.5">Dissonant</p>
-        </button> 
+        <Archetype onClick={handleClick} className="archetype-btn">
+          Ignorant
+        </Archetype>
+        <Archetype onClick={handleClick} className="archetype-btn">
+          Harmonious
+        </Archetype>
+        <Archetype onClick={handleClick} className="archetype-btn">
+          Dissonant
+        </Archetype>
       </div>
     );
     setFati(children);
@@ -60,7 +68,7 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center justify-between p-24">
       <div className="box-border h-32">
-        { initPrompt }
+        {initPrompt}
       </div>
       <p className="mt-12">Choose your Archetype:</p>
       <div className="mt-4 border-black">
