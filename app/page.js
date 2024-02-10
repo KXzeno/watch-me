@@ -41,10 +41,10 @@ export default function Home() {
   /* Expand archetype values */
   let [fati, setFati] = React.useState(<p className="m-1.5 hover:animate-bounce">Fati</p>);
 
-  let handleClick = (archString) => {
-    setFati(archString);
-    revalidatePath('/');
-  };
+  // let handleClick = (archString) => {
+  //   setFati(archString);
+  //   revalidatePath('/');
+  // };
 
   let showChildren = (event) => {
     preventDefault(event);
