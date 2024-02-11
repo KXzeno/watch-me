@@ -41,10 +41,9 @@ export default function Home() {
   /* Expand archetype values */
   let [fati, setFati] = React.useState(<p className="m-1.5 hover:animate-bounce">Fati</p>);
 
-  // let handleClick = (archString) => {
-  //   setFati(archString);
-  //   revalidatePath('/');
-  // };
+  let handleClick = (archString) => {
+    revalidatePath('/');
+  };
 
   let showChildren = (event) => {
     preventDefault(event);
@@ -61,9 +60,10 @@ export default function Home() {
         </Archetype>
       </div>
     );
+
     setFati(children);
     setInitPrompt("");
-  }
+  };
 
   return (
     <main className="flex flex-col items-center justify-between p-24">
